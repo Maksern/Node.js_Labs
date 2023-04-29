@@ -1,5 +1,3 @@
-let message = "Hello, my miamucho";
-
 function toUpper_FirstLetter_ofWords(message) {
   let messageNew = "";
   message.split(" ").map((word) => {
@@ -13,4 +11,8 @@ function toUpper_FirstLetter_ofWords(message) {
   return messageNew;
 }
 
+let message = "Hello, my miamucho";
+console.log(toUpper_FirstLetter_ofWords(message));
+
+message = "hi, amigos";
 console.log(toUpper_FirstLetter_ofWords(message));
