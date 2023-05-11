@@ -1,17 +1,17 @@
-// function addNumbers(a: number){
-//       return function(b?: number){
-//           if(!b){
-//               return a;
-//           } else{
-//               return addNumbers(a + b);
-//           }
-//       }
-//   }
+interface Adder {
+  (b: number): Adder;
+  (): number;
+}
 
-  function addNumbersss(a: number, b: number): number{
-        return a + b
+const add = ((a: number) => {
+  return function(b?: number){
+      if(typeof(b) != "number"){
+        return a
+      } else {
+        return add(a+b)
+      }
   }
- 
-//   var res = addNumbers(2)(5)(7)();
-let result: number = addNumbersss(2, 4)
-console.log("Result - " + result);
+}) as Adder
+
+let res = add(2)(5)(7)(1)(6)(5)(11)();
+console.log("Result - " + res);
