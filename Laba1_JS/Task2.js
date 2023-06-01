@@ -1,4 +1,4 @@
-function AnagramChecker(str1, str2){
+function AnagramCheckerV1(str1, str2){
     if(str1.length != str2.length){
         return false
     } else {
@@ -9,6 +9,19 @@ function AnagramChecker(str1, str2){
     }
 }
 
-let word1 = "trona";
-let word2 = "ronta"
-console.log(AnagramChecker(word1, word2));
+function AnagramCheckerV2(str1, str2){
+    if(str1.length != str2.length){
+        return false
+    } else {
+        let check = 0;
+        for (let index = 0; index < str1.length; index++) {
+            check += str1[index].charCodeAt(0) - str2[index].charCodeAt(0);
+        }
+        return check == 0 ? true : false;
+    }
+}
+
+let word1 = "trona lozka bor";
+let word2 = "ronta lozka bor"
+console.log(AnagramCheckerV2(word1, word2));
+
