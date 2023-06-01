@@ -13,5 +13,5 @@ const add = ((a: number) => {
   }
 }) as Adder
 
-let res = add(2)(5)(7)(1)(6)(5)(11)();
-console.log("Result - " + res);
+let answer = add(2)(5)(7)(1)(6)(5)(11)();
+console.log("Result - " + answer);
