@@ -1,10 +1,23 @@
 let array: Array<String> = ["hi", "hello", "alloha"];
 
-const getString = <T>(arr:Array<T>) => {
-      const res:Array<String> = arr.map( el => el + "");
+const runSequent = async <T, R>( 
+      arr: T[], cb: (item: T, index?: number) => Promise<R>
+  ): Promise<R[]> => {
+      const res: R[] = [];
+      for (const [index, element] of arr.entries()) {
+          const callbackElement: R = await cb(element, index);
+          res.push(callbackElement);
+      }
       return res;
-}
+};
 
-console.log(array);
-let answer:Array<String> = getString(array);
-console.log(answer);
+(async () => {
+      const results = await runSequent(array, (item, index) => {
+          return Promise.resolve({
+              item,
+              index
+          });
+      });
+      console.log(results);
+})();
+
