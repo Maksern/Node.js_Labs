@@ -11,13 +11,13 @@ class EventEmitter {
         this.listenerToOnceListener = new Map();
     }
 
-    on(event: string, listener: Listener): void {
+    registerHandler(event: string, listener: Listener): void {
         const listeners: Array<Listener> | undefined = this.events.get(event);
         if (listeners) listeners.push(listener);
         else this.events.set(event, [listener]);
     };
 
-    emit(event: string): void {
+    emitEvent(event: string): void {
         const listeners: Listener[] | undefined = this.events.get(event);
         if(listeners) listeners.forEach(listener => listener())
     };
@@ -28,7 +28,7 @@ class EventEmitter {
             listener();
         };
         this.listenerToOnceListener.set(listener, onceListener);
-        this.on(event, onceListener);
+        this.registerHandler(event, onceListener);
     };
 
     remove(event: string, listener: Listener): void {
@@ -77,10 +77,10 @@ class EventEmitter {
 
 }
 const emitter = new EventEmitter();
-emitter.on('userUpdated', () => console.log('Обліковий запис користувача оновлено'));
-emitter.on('userUpdated', () => console.log('Обліковий запис користувача оновлено'));
+emitter.registerHandler('userUpdated', () => console.log('Обліковий запис користувача оновлено'));
+emitter.registerHandler('userUpdated', () => console.log('Обліковий запис користувача оновлено'));
 emitter.once('userCreated', () => console.log('Обліковий запис користувача створено'));
-emitter.emit('userUpdated');
-emitter.emit('userCreated');
-emitter.emit('userCreated');
-emitter.emit('userCreated');
+emitter.emitEvent('userUpdated');
+emitter.emitEvent('userCreated');
+emitter.emitEvent('userCreated');
+emitter.emitEvent('userCreated');
