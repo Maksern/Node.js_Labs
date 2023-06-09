@@ -56,5 +56,5 @@ deletedElements = [2, 6]
 5. Напишіть власну реалізацію класу EventEmitter (Publisher/Subscriber), який поводитиметься так:
 
 const emitter = new MyEventEmitter();
-emitter.on('userUpdated', () => console.log('Обліковий запис користувача оновлено'));
-emitter.emit('userUpdated'); // Обліковий запис користувача оновлено
+emitter.registerHandler('userUpdated', () => console.log('Обліковий запис користувача оновлено'));
+emitter.emitEvent('userUpdated'); // Обліковий запис користувача оновлено
