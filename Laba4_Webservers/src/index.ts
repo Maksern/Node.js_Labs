@@ -1,4 +1,3 @@
-// @ts-nocheck
 import express from 'express';
 import UserRouter from './Routers/UserRouter.js';
 

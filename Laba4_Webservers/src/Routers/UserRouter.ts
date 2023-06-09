@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Router } from 'express';
 import {controller} from '../Controllers/Users_controller.js';
 const router = Router();
